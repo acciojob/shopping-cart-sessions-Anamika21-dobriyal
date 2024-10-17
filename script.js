@@ -128,23 +128,3 @@ clearCartBtn.addEventListener("click", clearCart);
 renderProducts();
 renderCart();
 
-// Click the "Add to Cart" button for Product 1 (the first product)
-cy.get("ul#product-list").children("li").first().children("button").click();
-
-// Click the "Add to Cart" button for Product 5 (the fifth product)
-cy.get("ul#product-list").children("li").eq(4).children("button").click();
-
-// Click the "Add to Cart" button for Product 1 again (the first product)
-cy.get("ul#product-list").children("li").first().children("button").click();
-
-// Now assert that sessionStorage has three items in the cart: 
-// Product 1, Product 5, and Product 1 (again)
-cy.window()
-  .its("sessionStorage")
-  .invoke("getItem", "cart")
-  .should("eq", JSON.stringify([
-    { id: 1, name: "Product 1", price: 10 },
-    { id: 5, name: "Product 5", price: 50 },
-    { id: 1, name: "Product 1", price: 10 }
-  ]));
-
