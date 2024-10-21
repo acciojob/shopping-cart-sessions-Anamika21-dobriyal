@@ -93,7 +93,7 @@ function addToCart(productId) {
     
     // Save the updated cart to session storage
     saveCart(cart);
-    
+     console.log("Product added to cart:", product); // Debugging: Log added product
     // Render the updated cart list
     renderCart();
   }
