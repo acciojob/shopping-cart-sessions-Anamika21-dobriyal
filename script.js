@@ -87,11 +87,19 @@ function addToCart(productId) {
   const product = products.find((p) => p.id === parseInt(productId));
   if (product) {
     const cart = getCart();
+    
+    // Push the product to the cart (allowing multiple entries of the same product)
     cart.push(product);
+    
+    // Save the updated cart to session storage
     saveCart(cart);
+    
+    // Render the updated cart list
     renderCart();
   }
 }
+
+
 
 // Remove item from cart
 function removeFromCart(productId) {
